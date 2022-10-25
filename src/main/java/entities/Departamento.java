@@ -9,13 +9,14 @@ import java.util.Collection;
  * @author David
  */
 @Entity
-@Table(name = "depart")
+@Table(name = "DEPART")
+@NamedQuery(name="Departamento.busquedaPorNombre", query="SELECT d FROM Departamento d WHERE d.dname=:dname")
 public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)    
-    @Column(name = "dept_no")
+    @Id                         // Indica que es clave principal
+    @Basic(optional = false)    // Indica que el campo no puede ser nulo  
+    @Column(name = "dept_no")   // Nombre en la BD del campo
     private Short deptNo;
     
     @Column(name = "dnombre")
@@ -24,7 +25,8 @@ public class Departamento implements Serializable {
     @Column(name = "loc")    
     private String loc;
     
-    @OneToMany(mappedBy = "deptNo")
+    @OneToMany(mappedBy = "deptNo", cascade=CascadeType.ALL) // Atributo que relaciona en la clase Emple
+    @JoinColumn(name="dept_no")     // Nombre de la columna en la tabla Emple
     private Collection<Empleado> empleCollection;
 
     public Departamento() {

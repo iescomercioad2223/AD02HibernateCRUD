@@ -13,8 +13,12 @@ import java.util.Date;
  *
  * @author David
  */
-@Entity
-@Table(name = "emple")
+@Entity                 // Los objetos de esta clase queremos que sean persistentes
+@Table(name = "EMPLE")  // Nombre de la Tabla en la BD
+@NamedQueries ({        // Nos definimos dos consultas preparadas
+    @NamedQuery(name="Empleado.busquedaPorNombre", query="SELECT e FROM Empleado e WHERE b.name=:name"), 
+    @NamedQuery(name="Empleado.buscarTodos", query="SELECT e FROM Empleado e") 
+})
 public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +30,6 @@ public class Empleado implements Serializable {
     @Column(name = "apellido")
     private String apellido;
     
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "comision")
     private Float comision;
     
@@ -34,7 +37,7 @@ public class Empleado implements Serializable {
     private Short dir;
     
     @Column(name = "fecha_alt")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE) // Debe indicarse Date y Calendar
     private Date fechaAlt;
     
     @Column(name = "oficio")
@@ -43,8 +46,8 @@ public class Empleado implements Serializable {
     @Column(name = "salario")
     private Float salario;
     
-    @JoinColumn(name = "dept_no", referencedColumnName = "dept_no")
-    @ManyToOne
+    @JoinColumn(name = "dept_no", referencedColumnName = "dept_no") // referencedColumnName campo en la tabla que es la foreign key en EMPLE
+    @ManyToOne // Muchos empleados a 1 departamento
     private Departamento deptNo;
 
     public Empleado() {
