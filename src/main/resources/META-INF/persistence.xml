@@ -9,10 +9,11 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://192.168.66.129:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://192.168.66.129:3306/HIBERNATE?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
             <property name="jakarta.persistence.jdbc.user" value="usuario"/>
             <property name="jakarta.persistence.jdbc.password" value="docker"/>
-            
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+        
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.show_sql" value="true"/>           
         </properties>

@@ -10,7 +10,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "DEPART")
-@NamedQuery(name="Departamento.busquedaPorNombre", query="SELECT d FROM Departamento d WHERE d.dname=:dname")
+@NamedQuery(name="Departamento.busquedaPorNombre", query="SELECT d FROM Departamento d WHERE d.dnombre=:dnombre")
 public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,8 +25,8 @@ public class Departamento implements Serializable {
     @Column(name = "loc")    
     private String loc;
     
-    @OneToMany(mappedBy = "deptNo", cascade=CascadeType.ALL) // Atributo que relaciona en la clase Emple
-    @JoinColumn(name="dept_no")     // Nombre de la columna en la tabla Emple
+    @OneToMany(mappedBy = "empNo", cascade=CascadeType.ALL)    // Atributo que relaciona en la clase Emple
+ //   @JoinColumn(name="emp_no")                                 // Nombre de la columna en la tabla Emple
     private Collection<Empleado> empleCollection;
 
     public Departamento() {
@@ -90,7 +90,7 @@ public class Departamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Departamento{" + "deptNo=" + deptNo + ", dnombre=" + dnombre + ", loc=" + loc + ", empleCollection=" + empleCollection + '}';
+       return this.deptNo + "\t" + this.dnombre + "\t\t" + this.loc;
     }
 
     

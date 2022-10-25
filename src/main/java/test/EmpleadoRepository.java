@@ -14,7 +14,7 @@ public class EmpleadoRepository {
     }
 
     // Busqueda por ID
-    public Optional<Empleado> findById(Integer id) {
+    public Optional<Empleado> findById(Short id) {
         Empleado empleado = entityManager.find(Empleado.class, id);
         return empleado != null ? Optional.of(empleado) : Optional.empty();
     }
@@ -25,14 +25,14 @@ public class EmpleadoRepository {
     }
 
     // Crea una Query que busca por nombre
-    public Optional<Empleado> findByName(String name) {
-        Empleado empleado = entityManager.createQuery("SELECT b FROM Empleado b WHERE b.name = :name", Empleado.class).setParameter("name", name).getSingleResult();
+    public Optional<Empleado> findByName(String papellido) {
+        Empleado empleado = entityManager.createQuery("SELECT b FROM Empleado b WHERE b.apellido = :apellido", Empleado.class).setParameter("apellido", papellido).getSingleResult();
         return empleado != null ? Optional.of(empleado) : Optional.empty();
     }
 
     // Utiliza una query predefinida Empleado.findByName
-    public Optional<Empleado> findByNameNamedQuery(String name) {
-        Empleado empleado = entityManager.createNamedQuery("Empleado.busquedaPorNombre", Empleado.class).setParameter("name", name).getSingleResult();
+    public Optional<Empleado> findByNameNamedQuery(String papellido) {
+        Empleado empleado = entityManager.createNamedQuery("Empleado.busquedaPorNombre", Empleado.class).setParameter("apellido", papellido).getSingleResult();
 
         return empleado != null ? Optional.of(empleado) : Optional.empty();
     }

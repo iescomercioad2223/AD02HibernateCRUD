@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity                 // Los objetos de esta clase queremos que sean persistentes
 @Table(name = "EMPLE")  // Nombre de la Tabla en la BD
 @NamedQueries ({        // Nos definimos dos consultas preparadas
-    @NamedQuery(name="Empleado.busquedaPorNombre", query="SELECT e FROM Empleado e WHERE b.name=:name"), 
+    @NamedQuery(name="Empleado.busquedaPorNombre", query="SELECT e FROM Empleado e WHERE e.apellido=:apellido"), 
     @NamedQuery(name="Empleado.buscarTodos", query="SELECT e FROM Empleado e") 
 })
 public class Empleado implements Serializable {
@@ -143,7 +143,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "Empleado{" + "empNo=" + empNo + ", apellido=" + apellido + ", comision=" + comision + ", dir=" + dir + ", fechaAlt=" + fechaAlt + ", oficio=" + oficio + ", salario=" + salario + ", deptNo=" + deptNo + '}';
+        return empNo + "\t" + apellido + "\t" + comision + "\t" + dir + "\t" + fechaAlt + "\t" + oficio + "\t" + salario + "\t" + deptNo + '\t';
     }
 
   

@@ -15,7 +15,7 @@ public class DepartamentoRepository {
         this.entityManager = entityManager;
     }
 
-    public Optional<Departamento> findById(Integer id) {
+    public Optional<Departamento> findById(Short id) {
 
         Departamento departamento = entityManager.find(Departamento.class, id);
         return departamento != null ? Optional.of(departamento) : Optional.empty();
@@ -28,7 +28,7 @@ public class DepartamentoRepository {
 
     public Optional<Departamento> findByName(String name) {
 
-        Departamento departamento = entityManager.createNamedQuery("Departamento.busquedaPorNombre", Departamento.class).setParameter("name", name).getSingleResult();
+        Departamento departamento = entityManager.createNamedQuery("Departamento.busquedaPorNombre", Departamento.class).setParameter("dnombre", name).getSingleResult();
         return departamento != null ? Optional.of(departamento) : Optional.empty();
     }
 
