@@ -33,53 +33,60 @@ public class Run {
         
         Optional <Departamento> savedDepartamento  = departamentoRepositorio.save(d1);
         System.out.println("Almacenado departamento: "+ savedDepartamento.get());
-
-        // Mostrar todos los departamentos
-        List <Departamento> departamentos = departamentoRepositorio.findAll();
-        System.out.println("Departamentos:");
-        departamentos.forEach(System.out::println);
-        
-        // Buscar departamento por nombre
-        Optional <Departamento> departamentoByName = departamentoRepositorio.findByName( "PRODUCCION");
-        System.out.println( "Buscando un departamento por nombre {}: ");
-        departamentoByName.ifPresent(System.out::println);
-        
-        // Buscando empleado por ID
-        Optional <Empleado> buscarEmpleado= empleadoRepository.findById((short)7521);
-        buscarEmpleado.ifPresent(System.out::println);
-        
-        // Buscando un empleado por id inexistente
-        Optional <Empleado> notExistenteDepartamento  = empleadoRepository.findById((short)99);
-        notExistenteDepartamento.ifPresent(System.out::println);
-        
-        // Lista todos los Empleados
-        List <Empleado> empleados = empleadoRepository.findAll();
-        System.out.println( "Empleado existentes en la BD: ");
-        empleados.forEach(System.out::println);
-        
-        // Buscar empleado por nombre
-        Optional <Empleado> queryEmpleado = empleadoRepository.findByName( "JIMENEZ" );
-        System.out.println( "Mostrado Empleado JIMENEZ {}:");        
-        queryEmpleado.ifPresent(System.out::println);
-        
-        // Buscar un empleado por nombre usando name query
-        Optional <Empleado> queryEmpleado2 = empleadoRepository.findByNameNamedQuery("MARTIN");
-        System.out.println( "Mostrando Empleado 2 {}:");
-        queryEmpleado2.ifPresent(System.out::println);
+//
+//        // Mostrar todos los departamentos
+//        List <Departamento> departamentos = departamentoRepositorio.findAll();
+//        System.out.println("Departamentos:");
+//        departamentos.forEach(System.out::println);
+//        
+//        // Buscar departamento por nombre
+//        Optional <Departamento> departamentoByName = departamentoRepositorio.findByName( "PRODUCCION");
+//        System.out.println( "Buscando un departamento por nombre {}: ");
+//        departamentoByName.ifPresent(System.out::println);
+//        
+//        // Buscando empleado por ID
+//        Optional <Empleado> buscarEmpleado= empleadoRepository.findById((short)7521);
+//        buscarEmpleado.ifPresent(System.out::println);
+//        
+//        // Buscando un empleado por id inexistente
+//        Optional <Empleado> notExistenteDepartamento  = empleadoRepository.findById((short)99);
+//        notExistenteDepartamento.ifPresent(System.out::println);
+//        
+//        // Lista todos los Empleados
+//        List <Empleado> empleados = empleadoRepository.findAll();
+//        System.out.println( "Empleado existentes en la BD: ");
+//        empleados.forEach(System.out::println);
+//        
+//        // Buscar empleado por nombre
+//        Optional <Empleado> queryEmpleado = empleadoRepository.findByName( "JIMENEZ" );
+//        System.out.println( "Mostrado Empleado JIMENEZ {}:");        
+//        queryEmpleado.ifPresent(System.out::println);
+//        
+//        // Buscar un empleado por nombre usando name query
+//        Optional <Empleado> queryEmpleado2 = empleadoRepository.findByNameNamedQuery("MARTIN");
+//        System.out.println( "Mostrando Empleado 2 {}:");
+//        queryEmpleado2.ifPresent(System.out::println);
         
         // Añadir un Empleado al departamanto
-        Optional <Departamento>  daux = departamentoRepositorio.findById((short)20);        
-        daux.ifPresent(a ->
-        {
-            Empleado aux = new Empleado((short)4444);
-            aux.setApellido("GUTIERREZ");
-            a.getEmpleCollection().add (aux);
-            System.out.println("Guardando  departamento: "+departamentoRepositorio.save(a));}
-        );
+//        Optional <Departamento>  daux = departamentoRepositorio.findById((short)20);        
+//        daux.ifPresent(a ->
+//        {
+//            Empleado aux = new Empleado((short)4444);
+//            aux.setApellido("GUTIERREZ");
+//            a.getEmpleCollection().add (aux);
+//            System.out.println("Guardando  departamento: "+departamentoRepositorio.save(a));}
+//        );
         
-        // Modificar un empleado
+//        // Modificar un empleado
+//        Empleado nuevo = new Empleado((short)4444);
+//        nuevo.setApellido("SAAVEDRA");
+//        nuevo.setOficio("DELINEANTE");
+//        Optional <Empleado> emp = empleadoRepository.update((short)4444, nuevo);
+//        emp.ifPresent(System.out::println);
         
         // Borrar un empleado
+//        Optional <Empleado> emp_borrado = empleadoRepository.delete ((short)4444);
+//        emp_borrado.ifPresent(System.out::println);
         
         // Modificar un departamento (quitando un empleado?)
         

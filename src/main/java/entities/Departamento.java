@@ -6,11 +6,11 @@ import java.util.Collection;
 
 /**
  *
- * @author David
+ * @author David Pérez Lledó
  */
-@Entity
-@Table(name = "DEPART")
-@NamedQuery(name="Departamento.busquedaPorNombre", query="SELECT d FROM Departamento d WHERE d.dnombre=:dnombre")
+@Entity // Entidad que deseamos que persista
+@Table(name = "DEPART")  // Nombre de la tabla en la BD
+@NamedQuery(name="Departamento.busquedaPorNombre", query="SELECT d FROM Departamento d WHERE d.dnombre=:dnombre") // Consulta predefinida
 public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,14 +19,13 @@ public class Departamento implements Serializable {
     @Column(name = "dept_no")   // Nombre en la BD del campo
     private Short deptNo;
     
-    @Column(name = "dnombre")
+    @Column(name = "dnombre")   
     private String dnombre;
     
     @Column(name = "loc")    
     private String loc;
     
-    @OneToMany(mappedBy = "empNo", cascade=CascadeType.ALL)    // Atributo que relaciona en la clase Emple
- //   @JoinColumn(name="emp_no")                                 // Nombre de la columna en la tabla Emple
+    @OneToMany(mappedBy = "empNo", cascade=CascadeType.ALL)      // Atributo que relaciona en la clase Emple
     private Collection<Empleado> empleCollection;
 
     public Departamento() {

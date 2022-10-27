@@ -13,6 +13,7 @@ import java.util.Date;
  *
  * @author David
  */
+
 @Entity                 // Los objetos de esta clase queremos que sean persistentes
 @Table(name = "EMPLE")  // Nombre de la Tabla en la BD
 @NamedQueries ({        // Nos definimos dos consultas preparadas
