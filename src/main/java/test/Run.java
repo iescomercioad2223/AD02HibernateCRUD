@@ -22,17 +22,18 @@ public class Run {
         EmpleadoRepository empleadoRepository = new EmpleadoRepository(entityManager);
         DepartamentoRepository departamentoRepositorio = new DepartamentoRepository(entityManager);
 
-        // Creamos un departamento y 3 empleados
-        Collection<Empleado> listaEmple = new ArrayList();
-        Departamento d1 = new Departamento((short)50);
-        d1.setDnombre("PRODUCCION");
-        listaEmple.add(new Empleado((short)1));
-        listaEmple.add(new Empleado((short)2));
-        listaEmple.add(new Empleado((short)3));
-        d1.setEmpleCollection(listaEmple);
-        
-        Optional <Departamento> savedDepartamento  = departamentoRepositorio.save(d1);
-        System.out.println("Almacenado departamento: "+ savedDepartamento.get());
+        // Creamos un departamento y 3 empleados       
+//        Departamento d1 = new Departamento((short)50);
+//        d1.setDnombre("PRODUCCION");
+//        d1.setLoc("VALENCIA");
+//        Collection<Empleado> listaEmple = new ArrayList();
+//        listaEmple.add(new Empleado((short)1));
+//        listaEmple.add(new Empleado((short)2));
+//        listaEmple.add(new Empleado((short)3));
+//        d1.setEmpleCollection(listaEmple);
+//        
+//        Optional <Departamento> savedDepartamento  = departamentoRepositorio.save(d1);
+//        System.out.println("Almacenado departamento: "+ savedDepartamento.get());
 //
 //        // Mostrar todos los departamentos
 //        List <Departamento> departamentos = departamentoRepositorio.findAll();
@@ -78,14 +79,15 @@ public class Run {
 //        );
         
 //        // Modificar un empleado
-//        Empleado nuevo = new Empleado((short)4444);
+//        Empleado nuevo = new Empleado((short)999);
 //        nuevo.setApellido("SAAVEDRA");
 //        nuevo.setOficio("DELINEANTE");
-//        Optional <Empleado> emp = empleadoRepository.update((short)4444, nuevo);
+//        nuevo.setSalario((float)1500.20);
+//        Optional <Empleado> emp = empleadoRepository.update((short)1, nuevo);
 //        emp.ifPresent(System.out::println);
         
-        // Borrar un empleado
-//        Optional <Empleado> emp_borrado = empleadoRepository.delete ((short)4444);
+//        // Borrar un empleado
+//        Optional <Empleado> emp_borrado = empleadoRepository.delete ((short)3);
 //        emp_borrado.ifPresent(System.out::println);
         
         // Modificar un departamento (quitando un empleado?)

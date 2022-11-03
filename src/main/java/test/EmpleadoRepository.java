@@ -52,24 +52,40 @@ public class EmpleadoRepository {
 
     // Modificación de empleado
     public Optional<Empleado> update(Short id, Empleado nuevo) {
-        // Cargamos el empleado que queremos modificar
-        Empleado old = entityManager.find(Empleado.class, id);
-
-        old.setApellido(nuevo.getApellido());
-        old.setOficio(nuevo.getOficio()); // etc.       
-        return Optional.of(old);
+        try {
+            
+            entityManager.getTransaction().begin();
+            // Cargamos el empleado que queremos modificar
+            Empleado old = entityManager.find(Empleado.class, id);
+            if (old==null) 
+                return null;
+            old.setApellido(nuevo.getApellido());
+            old.setOficio(nuevo.getOficio()); // etc.   
+            old.setSalario(nuevo.getSalario());
+            entityManager.getTransaction().commit();
+            return Optional.of(old);
+       
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return Optional.empty();
     }
 
     public Optional<Empleado> delete(short s) {
         try {
             entityManager.getTransaction().begin();
-            Empleado e = entityManager.find(Empleado.class, (short) 4444);
+            Empleado e = entityManager.find(Empleado.class, (short) s);
+            if (e == null) {
+                return null;
+            }
             entityManager.remove(e);
             entityManager.getTransaction().commit();
 
             return Optional.of(e);
         } catch (Exception e) {
             e.printStackTrace();
+            entityManager.getTransaction().rollback();
         }
         return Optional.empty();
     }

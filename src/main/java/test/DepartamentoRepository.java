@@ -40,6 +40,7 @@ public class DepartamentoRepository {
             return Optional.of(departamento);
         } catch (Exception e) {
             e.printStackTrace();
+            entityManager.getTransaction().rollback();
         }
         return Optional.empty();
     }
